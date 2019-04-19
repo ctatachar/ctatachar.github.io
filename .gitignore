@@ -6,3 +6,4 @@ echo SL_screenshots/ > .gitignore
 SF_SL_CT/discussion.rtf
 SF_SL_CT/discussion.rtf
 *.rtf
+SF_SL_CT/SL_screenshots/android.png
