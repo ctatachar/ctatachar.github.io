@@ -2,3 +2,6 @@
 *.jpeg
 *.rtf
 echo SL_screenshots/ > .gitignore
+*.rtf
+SF_SL_CT/discussion.rtf
+SF_SL_CT/discussion.rtf
