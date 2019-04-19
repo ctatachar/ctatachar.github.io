@@ -1,0 +1,4 @@
+
+*.jpeg
+*.rtf
+echo SL_screenshots/ > .gitignore
