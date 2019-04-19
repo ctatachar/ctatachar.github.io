@@ -1,0 +1,203 @@
+/* CSS Variables for colors includes fallback for IE11 */
+:root {
+    --main-bg-color: #f6f6f6;
+    --primary-font-color: #444;
+    --alert-color: #ff4c4c;
+    --primary-blue: #005FAE;
+    --success-color: #9cd982;
+    --light-gray: #f3f3f3;
+    --gray: #f8f8f8;
+    --white: #fff;
+  }
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+.container {
+  padding: 0.9rem;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--primary-font-color);
+}
+
+button i {
+  color: var(--white);
+}
+
+h1 {
+  font-size: 1.4rem;
+}
+
+.input-item {
+  height: 3rem;
+  width: 80%;
+  display: inline-block;
+  padding: 5px;
+}
+
+.add-item {
+  width: 20%;
+  height: 3rem;
+  vertical-align: top;
+  margin: 0;
+  border-radius: 3px;
+  color: var(--white);
+  float: right;
+}
+
+.clear-list {
+  margin: 30px 0 0.5rem;
+  height: 3rem;
+  color: var(--white);
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  float: right;
+  width: 20%;
+}
+
+button {
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: background-color .25s ease-out, color .25s ease-out;
+  vertical-align: middle;
+  border-radius: 0;
+  padding: .4rem 0.8rem;
+  font-size: .8rem;
+  background-color: var(--primary-blue);
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.list {
+  width: 100%;
+  padding: 1em;
+  margin: 1em auto;
+  overflow: auto;
+  background-color: var(--white);
+  box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+
+.list__items {
+  list-style: none;
+  clear: both;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  padding: 0;
+}
+
+.list__item {
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+.list__item__toggle {
+  display: inline-block;
+  width: calc(100% - 2.8rem);
+  text-align: left;
+  padding: 0.85rem 2.25rem 0.85rem 1rem;
+  background-color: var(--light-gray);
+  border: 1px solid var(--gray);
+}
+
+.list__item__toggle--purchased {
+  text-decoration: line-through;
+  background-color: var(--success-color);
+}
+
+.fas.fa-check {
+  display: none;
+}
+
+.list__item__toggle.list__item__toggle--purchased >.fas.fa-check {
+  display: inline-block;
+  text-decoration: none;
+  padding-right: 5px;
+}
+
+.list__item__remove {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  right: 0;
+  width: 2.8rem;
+  background-color: var(--alert-color);
+  transform: translateY(-50%);
+  color: var(--white);
+}
+
+.list__item__remove i {
+  vertical-align: middle;
+}
+
+@media only screen and (min-width: 100px) {
+  button.add-item i,
+  button.clear-list i {
+    display: none;
+  }
+  .clear-list {
+    white-space: initial;
+  }
+}
+
+@media only screen and (min-width: 321px) {
+  .list {
+    max-width: 45rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  * {
+    font-size: 1rem;
+  }
+  .container {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  button i {
+    font-size: 1rem;
+  }
+
+  button.add-item i,
+  button.clear-list i {
+    display: inline-block;
+  }
+  .clear-list {
+    white-space: pre-wrap;
+  }
+}
+
+@media only screen and (min-width: 676px) {
+  .clear-list {
+    white-space: initial;
+  }
+}

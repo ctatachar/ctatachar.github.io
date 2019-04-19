@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Shopping List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- font awesome icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="sl-app" class="container">
+    <shopping-list-comp :list="list"></shopping-list-comp>
+  </div>
+
+  <template id="shopping-list-templ">
+    <section class="list">
+      <h1>
+        Shopping List: {{ pending }}
+      </h1>
+      <div class="add">
+        <input type="text" class="input-item" v-model="newItem" @keyup.enter="addItem"
+          placeholder="Enter an item to buy">
+        <button @click="addItem" class="add-item" title="Add item to list">
+          <i class="fa fa-plus"></i> Add Item
+        </button>
+      </div>
+
+      <div class="remove" v-if="list.length > 0">
+        <button class="clear-list" @click="clearList" title="Clear all items">
+          <i class="fa fa-trash"></i> Clear List
+        </button>
+      </div>
+
+      <transition-group name="fade" tag="ul" class="list__items">
+        <list-item v-for="(item, index) in list" @remove="removeItem(index)" @purchased="purchasedItem(item)"
+          :item="item" :key="item"></list-item>
+      </transition-group>
+    </section>
+  </template>
+
+  <template id="list-item">
+    <li class="list__item">
+      <input type="checkbox" v-model="item.purchased" title="Toggle purchased"
+        aria-label="Click checkbox/or Press Spacebar to toggle purchased">
+      <div :class="className">
+        <i class="fas fa-check"></i> {{ item.name }}
+      </div>
+      <button class="list__item__remove" @click="$emit('remove')" title="Remove current item from list">
+        <i class="fa fa-times"></i>
+      </button>
+    </li>
+  </template>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
