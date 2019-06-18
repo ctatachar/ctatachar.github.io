@@ -67,19 +67,6 @@ a:hover {
     color: var(--dark-blue);
 }
 
-/* vertical media queries for panel so the buttons show up OK in short height viewports */
-@media only screen and (min-height: 100px) {
-    .panel {
-        height: 74vh;
-    }
-}
-
-@media only screen and (min-height: 500px) {
-    .panel {
-        height: 360px;
-    }
-}
-
 .cars,
 .trees,
 .co2 {
@@ -95,7 +82,7 @@ a:hover {
     float: right;
     text-align: right;
     position: absolute;
-    bottom: 0;
+    bottom: 6px;
     right: 10px;
 }
 
@@ -243,8 +230,12 @@ button.active {
     }
 }
 
-/* small media query styles only */
-@media only screen and (min-width: 100px) {
+/* combination of horizontal and vertical media queries for panel + others, so the panels and buttons show up best on all width and height viewports */
+@media only screen and (min-height: 100px) and (min-width:100px) {
+    .panel {
+        height: 68vh;
+    }
+
     body {
         line-height: 20px;
         color: var(--primary-font-color);
@@ -315,8 +306,25 @@ button.active {
     }
 }
 
+@media only screen and (min-height: 360px) and (min-width:100px) {
+    .panel {
+        height: 62vh;
+    }
+}
+
+/* large + vertical media query styles for horizontal modes */
+@media only screen and (min-height: 300px) and (min-width: 500px) {
+    .panel {
+        height: 66vh;
+    }
+}
+
 /* large media query styles only */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-height: 500px) and (min-width: 700px) {
+    .panel {
+        height: 360px;
+    }
+
     body {
         line-height: 24px;
         font-size: 1rem;
