@@ -1,0 +1,21 @@
+{
+    "user1": {
+        "fName": "John",
+        "energyPrev": 791,
+        "energyCur": 573,
+        "energyChange": 218,
+        "cars": 6,
+        "trees": 6,
+        "acre": 0.181,
+        "co2": 154
+    },
+    "user2": {
+        "fName": "Jane",
+        "energyPrev": 900,
+        "energyCur": 468,
+        "energyChange": 432,
+        "cars": 12,
+        "trees": 12,
+        "co2": 305
+    }
+}

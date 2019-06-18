@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Energy Savings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/main.css" />
+    <!-- Google Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="energy-app" class="app-container">
+        <!-- energy widget component include-->
+        <energy-widget-comp></energy-widget-comp>
+    </div>
+    <!--Energy Widget component template -->
+    <template id="energy-widget-templ">
+        <div id="energy-widget" class="container">
+            <h1> <i class="fas fa-medal"></i>Your Electricity Savings</h1>
+            <div class="panel">
+                <transition name="fade">
+                    <div class="cars" v-if="carsActive">
+                        <transition name="fade">
+                            <div class="visual">
+                                <i class="fas fa-car-side lg" v-for="item in info.user1.cars"></i>
+                            </div>
+                        </transition>
+                        <div class="info">
+                            <h2>Last month, you saved enough energy to take <strong>{{info.user1.cars}}</strong>
+                                cars
+                                off the road!</h2>
+                            <p>Great job, {{info.user1.fName}}! You used {{info.user1.energyCur}} kWh last month,
+                                compared to
+                                {{info.user1.energyPrev}} kWh in the same month last year. The
+                                resulting savings of {{info.user1.energyChange}} KWh is enough to offset the energy
+                                consumption of {{info.user1.cars}}
+                                average-size cars for one month.
+                            </p>
+                        </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="trees" v-if="treesActive">
+                        <div class="visual"><i class="fas fa-tree lg" v-for="n in info.user1.trees"></i></div>
+                        <div class="info">
+                            <h2>Last month, you prevented CO<sub>2</sub> sequestered by
+                                <strong>{{info.user1.trees}}</strong>!</h2>
+                            <p>So cool! You used {{info.user1.energyCur}} kWh last month, compared to
+                                {{info.user1.energyPrev}} kWh in the same month last
+                                year. The resulting savings The
+                                resulting savings of {{info.user1.energyChange}} KWh, is the equivalent of the
+                                carbon
+                                sequestered by
+                                {{ info.user1.trees}} trees in 6 months or {{ info.user1.acre}} acres of
+                                forest in
+                                a
+                                year.</p>
+                        </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="co2" v-if="co2Active">
+                        <div class="visual"><i class="fas fa-smog lg"></i></div>
+                        <div class="info">
+                            <h2>Last month, you prevented <strong>{{info.user1.co2}}</strong> Kg of CO<sub>2</sub>
+                                emissions!</h2>
+                            <p>You did it! You used {{info.user1.energyCur}} kWh last month, compared to
+                                {{info.user1.energyPrev}} kWh in the same month last
+                                year. With
+                                resulting savings of {{info.user1.energyChange}} KWh, you prevented
+                                {{info.user1.co2}}
+                                Kilograms of CO<sub>2</sub> emissions.</p>
+                        </div>
+                    </div>
+                </transition>
+                <div class="how"><i class="fas fa-info-circle"></i><a
+                        href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator" target="_blank">How is
+                        this
+                        calculated?</a></div>
+            </div>
+
+            <div class="btn-group"><button v-on:click="carsFilter" v-bind:class="{ active: carsActive }"><i
+                        class="fas fa-car-side"></i> Cars</button> <button v-on:click="treesFilter"
+                    v-bind:class="{ active: treesActive }"><i class="fas fa-tree"></i> Trees</button>
+                <button v-on:click="co2Filter" v-bind:class="{ active: co2Active }"><i
+                        class="fas fa-smog"></i>CO<sub>2</sub></button>
+            </div>
+        </div>
+        <!-- closing energy widget component template -->
+    </template>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
