@@ -70,7 +70,7 @@ a:hover {
 /* vertical media queries for panel so the buttons show up OK in short height viewports */
 @media only screen and (min-height: 100px) {
     .panel {
-        height: 70vh;
+        height: 74vh;
     }
 }
 
